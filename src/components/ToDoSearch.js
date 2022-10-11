@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { AddModal } from "./AddModal";
 
-export const ToDoSearch = () => {
+export const ToDoSearch = ({ tasksList, setTasksList }) => {
+  const [displayModal, setDisplayModal] = useState(false);
+
+  function searchTask(e) {
+    const search = e.target.value;
+    let findTasks = tasksList.filter((e) => {
+      return e.task.toLowerCase().includes(search.toLowerCase());
+    });
+
+    //Para que siempre nos muestre un resultado en pantalla
+    if (search.length <= 1 || findTasks <= 0) {
+      findTasks = JSON.parse(localStorage.getItem("taks"));
+    }
+    setTasksList(findTasks);
+  }
+
   return (
     <section className="searchAddToDo">
       <div className="searchAddToDo__inputContainer">
@@ -16,9 +32,13 @@ export const ToDoSearch = () => {
           type="text"
           placeholder="Buscar tarea"
           className="searchAddToDo__inputContainer__input"
+          onChange={searchTask}
         />
       </div>
-      <span type="button" className="searchAddToDo__btnAdd">
+      <span
+        className="searchAddToDo__btnAdd"
+        onClick={() => setDisplayModal(true)}
+      >
         <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M14 0C17.713 0 21.274 1.475 23.8995 4.1005C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28C10.287 28 6.72601 26.525 4.1005 23.8995C1.475 21.274 0 17.713 0 14C0 10.287 1.475 6.72601 4.1005 4.1005C6.72601 1.475 10.287 0 14 0V0ZM12.8 12.8H8.2C7.88174 12.8 7.57652 12.9264 7.35147 13.1515C7.12643 13.3765 7 13.6817 7 14C7 14.3183 7.12643 14.6235 7.35147 14.8485C7.57652 15.0736 7.88174 15.2 8.2 15.2H12.8V19.8C12.8 20.1183 12.9264 20.4235 13.1515 20.6485C13.3765 20.8736 13.6817 21 14 21C14.3183 21 14.6235 20.8736 14.8485 20.6485C15.0736 20.4235 15.2 20.1183 15.2 19.8V15.2H19.8C20.1183 15.2 20.4235 15.0736 20.6485 14.8485C20.8736 14.6235 21 14.3183 21 14C21 13.6817 20.8736 13.3765 20.6485 13.1515C20.4235 12.9264 20.1183 12.8 19.8 12.8H15.2V8.2C15.2 7.88174 15.0736 7.57652 14.8485 7.35147C14.6235 7.12643 14.3183 7 14 7C13.6817 7 13.3765 7.12643 13.1515 7.35147C12.9264 7.57652 12.8 7.88174 12.8 8.2V12.8V12.8Z"
@@ -26,6 +46,14 @@ export const ToDoSearch = () => {
           />
         </svg>
       </span>
+      {displayModal === true && (
+        <AddModal
+          setDisplayModal={setDisplayModal}
+          tasksList={tasksList}
+          setTasksList={setTasksList}
+          typeModal="add"
+        />
+      )}
     </section>
   );
 };

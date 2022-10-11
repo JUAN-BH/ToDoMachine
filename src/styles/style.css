@@ -13,18 +13,50 @@
   align-items: center;
 }
 .Header__infoContainer__title {
-  font-size: 2.4rem;
+  font-size: 3rem;
+  width: 50%;
+}
+.Header__infoContainer__title__decor {
+  display: inline-flex;
+  margin-inline: 4px;
+  color: #009AFF;
 }
 .Header__infoContainer__info {
   font-size: 1.4rem;
   font-weight: 500;
 }
 .Header__bar {
-  margin-top: 20px;
+  position: relative;
   width: 100%;
-  height: 14px;
+  height: 20px;
+  margin-top: 20px;
   border-radius: 8px;
-  background-color: #ccc;
+  background-color: #2D3C4F;
+  box-shadow: 0px 1px 1px 0px rgba(84, 67, 67, 0.66);
+  overflow: hidden;
+}
+.Header__bar__pogressBar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #2D3C4F;
+  border: none;
+  border-radius: 0.5rem;
+  bottom: 0;
+  display: flex;
+  left: 0;
+  line-height: 5px;
+  vertical-align: 10px;
+  z-index: 1;
+}
+.Header__bar__percent {
+  position: absolute;
+  left: calc(50% - 50px);
+  width: 100px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  z-index: 5;
 }
 
 .searchAddToDo {
@@ -41,9 +73,10 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  margin-right: 4px;
+  margin-right: 12px;
   border-radius: 8px;
-  background-color: #ccc;
+  background-color: #2D3C4F;
+  box-shadow: 1px 2px 2px 0px rgba(84, 67, 67, 0.6588235294);
 }
 .searchAddToDo__inputContainer__icon {
   width: 16px;
@@ -51,9 +84,10 @@
   margin-right: 4px;
 }
 .searchAddToDo__inputContainer__input {
-  width: 90%;
+  width: 100%;
   border: none;
   outline: none;
+  color: #fff;
   height: 100%;
   margin-left: 6px;
   font-size: 1.4rem;
@@ -61,12 +95,12 @@
 }
 .searchAddToDo__btnAdd {
   width: 35px;
-  height: 35px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
 }
 .searchAddToDo__btnAdd:hover svg path {
-  fill: blue;
+  fill: #009AFF;
 }
 
 .tasksContainer {
@@ -76,17 +110,20 @@
 .tasksContainer__list {
   list-style: none;
   width: 100%;
+  border-radius: 8px;
+  box-shadow: 1px 2px 2px 0px rgba(84, 67, 67, 0.6588235294);
+  overflow: hidden;
 }
 .tasksContainer__list__item {
   display: grid;
   grid-template-columns: 1fr auto auto;
-  gap: 18px;
+  gap: 20px;
   width: 100%;
   height: 57px;
   font-size: 1.4rem;
   font-weight: 500;
-  border-bottom: 1px solid black;
-  background-color: #ccc;
+  border-bottom: 0.1px solid #59697D;
+  background-color: #2D3C4F;
 }
 .tasksContainer__list__item__taskContainer {
   display: flex;
@@ -94,15 +131,18 @@
   padding-inline: 20px;
 }
 .tasksContainer__list__item__taskContainer .taskComplete {
+  display: block;
   width: 20px;
   text-align: center;
-  margin-right: 10px;
+  margin-right: 14px;
   border-radius: 50%;
-  background-color: red;
+  cursor: pointer;
 }
 .tasksContainer__list__item__taskContainer .task {
-  background-color: lightblue;
   width: 80%;
+}
+.tasksContainer__list__item__taskContainer .taskDone {
+  text-decoration: line-through;
 }
 .tasksContainer__list__item__edit {
   align-self: center;
@@ -110,7 +150,7 @@
   cursor: pointer;
 }
 .tasksContainer__list__item__edit:hover svg path {
-  fill: blue;
+  fill: #009AFF;
 }
 .tasksContainer__list__item__delete {
   align-self: center;
@@ -119,14 +159,67 @@
   cursor: pointer;
 }
 .tasksContainer__list__item__delete:hover svg path {
-  fill: red;
-}
-.tasksContainer__list__item:first-child {
-  border-radius: 8px 8px 0 0;
+  fill: rgb(192, 57, 43);
 }
 .tasksContainer__list__item:last-child {
-  border-radius: 0px 0px 8px 8px;
   border-bottom: none;
+}
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(11, 11, 17, 0.2901960784);
+}
+.modalContainer__modal {
+  position: relative;
+  top: 150px;
+  left: calc(50% - 177px);
+  display: flex;
+  flex-direction: column;
+  width: 354px;
+  height: 194px;
+  padding: 24px 16px;
+  border-radius: 8px;
+  background-color: #2D3C4F;
+}
+.modalContainer__modal__closeIcon {
+  position: absolute;
+  top: 8px;
+  right: 0px;
+  width: 30px;
+}
+.modalContainer__modal__title {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.modalContainer__modal__form {
+  width: 100%;
+  margin-top: 25px;
+}
+.modalContainer__modal__form .taskInput {
+  width: 300px;
+  height: 30px;
+  outline: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  background-color: transparent;
+}
+.modalContainer__modal__form .btnModal {
+  display: inline-block;
+  margin-top: 30px;
+  margin-right: 20px;
+  padding: 6px 15px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #59697D;
+  color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */
