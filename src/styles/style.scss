@@ -236,6 +236,15 @@
             top: 8px;
             right: 0px;
             width: 30px;
+            cursor: pointer;
+        }
+
+        &__closeIcon:hover {
+            svg {
+                path {
+                    fill: rgb(192, 57, 43);
+                }
+            }
         }
 
         &__title {
@@ -258,6 +267,10 @@
                 background-color: transparent;
             }
 
+            .taskInput:focus {
+                border-bottom: 1px solid #009AFF;
+            }
+
             .btnModal {
                 display: inline-block;
                 margin-top: 30px;
@@ -267,6 +280,11 @@
                 border-radius: 8px;
                 background-color: #59697D;
                 color: #fff;
+                cursor: pointer;
+            }
+
+            .btnModal:hover {
+                background-color: #009AFF;
             }
 
         }

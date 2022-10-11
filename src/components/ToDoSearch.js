@@ -30,7 +30,7 @@ export const ToDoSearch = ({ tasksList, setTasksList }) => {
         </span>
         <input
           type="text"
-          placeholder="Buscar tarea"
+          placeholder="Search task"
           className="searchAddToDo__inputContainer__input"
           onChange={searchTask}
         />

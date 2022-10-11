@@ -192,6 +192,10 @@
   top: 8px;
   right: 0px;
   width: 30px;
+  cursor: pointer;
+}
+.modalContainer__modal__closeIcon:hover svg path {
+  fill: rgb(192, 57, 43);
 }
 .modalContainer__modal__title {
   font-size: 2rem;
@@ -211,6 +215,9 @@
   border-bottom: 1px solid #fff;
   background-color: transparent;
 }
+.modalContainer__modal__form .taskInput:focus {
+  border-bottom: 1px solid #009AFF;
+}
 .modalContainer__modal__form .btnModal {
   display: inline-block;
   margin-top: 30px;
@@ -220,6 +227,10 @@
   border-radius: 8px;
   background-color: #59697D;
   color: #fff;
+  cursor: pointer;
+}
+.modalContainer__modal__form .btnModal:hover {
+  background-color: #009AFF;
 }
 
 /*# sourceMappingURL=style.css.map */

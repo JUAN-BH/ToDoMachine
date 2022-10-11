@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { saveLocalStorage } from "../utils/saveLocalStorage";
 
 export const AddModal = (props) => {
   const { setDisplayModal, tasksList, setTasksList, typeModal, task, taskId } =
     props;
+
+  useEffect(() => {
+    const input = document.querySelector(".taskInput");
+    input.focus();
+  }, []);
+
   function closeModal(e) {
     const nodeName = e.target.nodeName;
     const elementName = e.target.name;
@@ -30,7 +36,6 @@ export const AddModal = (props) => {
     setDisplayModal(false);
     console.log(tasksList);
   }
-
   function editTask(e) {
     e.preventDefault();
     const inputTask = e.target.task.value;
