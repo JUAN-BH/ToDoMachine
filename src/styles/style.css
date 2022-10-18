@@ -1,31 +1,33 @@
 @import url("./_globales.scss");
-.Header {
+header {
+  width: 100%;
+  max-width: 644px;
+}
+header .Header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  max-width: 644px;
   margin-bottom: 20px;
 }
-.Header__infoContainer {
+header .Header__infoContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.Header__infoContainer__title {
+header .Header__infoContainer__title {
   font-size: 3rem;
   width: 50%;
 }
-.Header__infoContainer__title__decor {
+header .Header__infoContainer__title__decor {
   display: inline-flex;
   margin-inline: 4px;
   color: #009AFF;
 }
-.Header__infoContainer__info {
+header .Header__infoContainer__info {
   font-size: 1.4rem;
   font-weight: 500;
 }
-.Header__bar {
+header .Header__bar {
   position: relative;
   width: 100%;
   height: 20px;
@@ -35,7 +37,7 @@
   box-shadow: 0px 1px 1px 0px rgba(84, 67, 67, 0.66);
   overflow: hidden;
 }
-.Header__bar__pogressBar {
+header .Header__bar__pogressBar {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -49,7 +51,7 @@
   vertical-align: 10px;
   z-index: 1;
 }
-.Header__bar__percent {
+header .Header__bar__percent {
   position: absolute;
   left: calc(50% - 50px);
   width: 100px;
@@ -58,17 +60,14 @@
   text-align: center;
   z-index: 5;
 }
-
-.searchAddToDo {
+header .searchAddToDo {
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 644px;
   height: 35px;
   margin-bottom: 20px;
   border-radius: 8px;
 }
-.searchAddToDo__inputContainer {
+header .searchAddToDo__inputContainer {
   display: flex;
   align-items: center;
   width: 100%;
@@ -78,12 +77,12 @@
   background-color: #2D3C4F;
   box-shadow: 1px 2px 2px 0px rgba(84, 67, 67, 0.6588235294);
 }
-.searchAddToDo__inputContainer__icon {
+header .searchAddToDo__inputContainer__icon {
   width: 16px;
   margin-left: 10px;
   margin-right: 4px;
 }
-.searchAddToDo__inputContainer__input {
+header .searchAddToDo__inputContainer__input {
   width: 100%;
   border: none;
   outline: none;
@@ -93,13 +92,13 @@
   font-size: 1.4rem;
   background-color: transparent;
 }
-.searchAddToDo__btnAdd {
+header .searchAddToDo__btnAdd {
   width: 35px;
   height: 30px;
   border-radius: 50%;
   cursor: pointer;
 }
-.searchAddToDo__btnAdd:hover svg path {
+header .searchAddToDo__btnAdd:hover svg path {
   fill: #009AFF;
 }
 
@@ -231,6 +230,40 @@
 }
 .modalContainer__modal__form .btnModal:hover {
   background-color: #009AFF;
+}
+.modalContainer__changesAlert {
+  position: relative;
+  top: 150px;
+  left: calc(50% - 177px);
+  display: flex;
+  flex-direction: column;
+  width: 354px;
+  height: 194px;
+  padding: 24px 16px;
+  border-radius: 8px;
+  background-color: #2D3C4F;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.modalContainer__changesAlert__btnRefresh {
+  display: inline-block;
+  margin-top: 30px;
+  margin-right: 20px;
+  padding: 6px 15px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #59697D;
+  color: #fff;
+  cursor: pointer;
+}
+.modalContainer__changesAlert__btnRefresh:hover {
+  background-color: #009AFF;
+}
+
+.noTasks {
+  color: #fff;
+  font-size: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */
