@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { ToDoHeader } from "../../components/ToDoHeader";
 import { ToDoCounter } from "../../components/ToDoCounter";
 import { ToDoList } from "../../components/ToDoList";
 import { ToDoItem } from "../../components/ToDoItem";
 import { ToDoSearch } from "../../components/ToDoSearch";
-import { Modal } from "../../components/Modal";
 import { NotFound } from "../../components/NotFound";
 import { EmptyTasks } from "../../components/EmptyTasks";
 import { useTasks } from "../../utils/useTasks";

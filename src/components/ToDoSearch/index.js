@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export const ToDoSearch = ({ setTasksSearched }) => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paramsValue = searchParams.get("search");
+
   function searchTask(e) {
-    const search = e.target.value;
-    setTasksSearched(search);
+    const searched = e.target.value;
+    setTasksSearched(searched);
+    setSearchParams({ search: searched });
   }
 
   function modalAdd() {
@@ -25,6 +29,8 @@ export const ToDoSearch = ({ setTasksSearched }) => {
         </span>
         <input
           type="text"
+          name="taskSearched"
+          value={paramsValue}
           placeholder="Search task"
           className="searchAddToDo__inputContainer__input"
           onChange={searchTask}
