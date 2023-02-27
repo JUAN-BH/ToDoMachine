@@ -1,7 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
+
+const initialState = (initalValue) => ({
+  item: initalValue,
+});
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "SAVE":
+      return {
+        ...state,
+        item: action.payload,
+      };
+      break;
+    default:
+      return {
+        ...state,
+      };
+  }
+};
 
 export const useLocalStorage = (key, initialValue) => {
-  const [item, setItem] = useState(initialValue);
+  const [state, dispatch] = useReducer(reducer, initialState(initialValue));
+  const { item } = state;
+  const onSave = (value) => dispatch({ type: "SAVE", payload: value });
+
   useEffect(() => {
     let tasksSaved = JSON.parse(localStorage.getItem(key));
     //si las tasks guardadas no son una array
@@ -10,14 +32,14 @@ export const useLocalStorage = (key, initialValue) => {
       localStorage.setItem("taks", JSON.stringify(initialValue));
       tasksSaved = initialValue;
     }
-    setItem(tasksSaved);
+    onSave(tasksSaved);
   }, []);
 
   const saveItem = (task) => {
     //guarda los taks recibidos
     localStorage.setItem("taks", JSON.stringify(task));
     //actualiza el estado de los tasks
-    setItem(task);
+    onSave(task);
   };
 
   return {

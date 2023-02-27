@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useLocalStorage } from "./useLocalStorage";
 export const useTasks = () => {
   const { item: tasksList, saveItem: saveTaksLS } = useLocalStorage("taks", []);
@@ -8,9 +9,8 @@ export const useTasks = () => {
   const [tasksDoneCounter, setTasksDoneCounter] = useState(0);
   //TodoSearch
   const [taskSearched, setTasksSearched] = useState("");
-  //ToDoModal
-  const [openModal, setOpenModal] = useState(false);
-  const [typeModal, setTypeModal] = useState("");
+
+  const { toDo } = useParams();
 
   function tasksDone() {
     let tasksDone = tasksList.filter((task) => task.done === true).length;
@@ -34,14 +34,14 @@ export const useTasks = () => {
   function saveTaks(text) {
     const newTasks = [...tasksList];
     newTasks.push({
-      id: new Date().getTime(),
+      id: Math.random().toString(16).slice(8),
       task: text,
       done: false,
     });
     saveTaksLS(newTasks);
   }
-  function editTasks(editTask, newTask) {
-    const indexTask = tasksList.findIndex((e) => e.task === editTask);
+  function editTasks(newTask) {
+    const indexTask = tasksList.findIndex((e) => e.id === toDo);
     const tasksSaved = tasksList;
 
     const taskEdited = (tasksList[indexTask] = {
@@ -94,9 +94,5 @@ export const useTasks = () => {
     editTasks,
     doneTask,
     deleteTask,
-    openModal,
-    setOpenModal,
-    typeModal,
-    setTypeModal,
   };
 };

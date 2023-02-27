@@ -1,18 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export const ToDoSearch = ({
-  setTasksSearched,
-  setOpenModal,
-  setTypeModal,
-}) => {
+export const ToDoSearch = ({ setTasksSearched }) => {
+  const navigate = useNavigate();
   function searchTask(e) {
     const search = e.target.value;
     setTasksSearched(search);
   }
 
   function modalAdd() {
-    setOpenModal(true);
-    setTypeModal("add");
+    navigate("/new");
   }
 
   return (

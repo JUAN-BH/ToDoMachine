@@ -6,8 +6,6 @@ export const ToDoCounter = ({
   tasksDoneCounter,
   tasksDone,
   tasksLeft,
-  // useManageTasks,
-  // displayTasks,
   tasksList,
 }) => {
   useEffect(() => {

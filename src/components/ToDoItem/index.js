@@ -1,22 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ToDoItem = (props) => {
-  const {
-    task,
-    taskId,
-    taskDone,
-    doneTask,
-    deleteTask,
-    setOpenModal,
-    setTypeModal,
-    setTaskToEdit,
-  } = props;
+  const navigate = useNavigate();
+  const { task, taskId, taskDone, doneTask, deleteTask } = props;
   const [checkedState, setCheckedState] = useState(taskDone);
 
   function editModal() {
-    setTaskToEdit(task);
-    setOpenModal(true);
-    setTypeModal("edit");
+    // setTaskToEdit(task);
+    // setOpenModal(true);
+    // setTypeModal("edit");
+    navigate(`/edit/${taskId}`);
   }
 
   return (
@@ -49,16 +43,6 @@ export const ToDoItem = (props) => {
           />
         </svg>
       </span>
-      {/* {displayModal === true && (
-        <AddModal
-          setDisplayModal={setDisplayModal}
-          tasksList={tasksList}
-          setTasksList={setTasksList}
-          typeModal="edit"
-          task={task}
-          taskId={taskId}
-        />
-      )} */}
     </li>
   );
 };

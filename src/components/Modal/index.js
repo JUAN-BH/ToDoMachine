@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-import { saveLocalStorage } from "../../utils/saveLocalStorage";
 
 export const Modal = (props) => {
   const { setOpenModal, typeModal, saveTaks, taskToEdit, editTasks } = props;
